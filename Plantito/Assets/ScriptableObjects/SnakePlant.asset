@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cb455147de9d043be14e7aed1f9181, type: 3}
+  m_Name: SnakePlant
+  m_EditorClassIdentifier: 
+  ItemIndex: 0
+  IsAccessible: 1
+  Name: Snake Plant
+  Price: 0
+  PlantSprite:
+  - {fileID: -1562812999, guid: a46f4697018334f48a8e8739478ece73, type: 3}
+  - {fileID: -1875320698, guid: a46f4697018334f48a8e8739478ece73, type: 3}
+  - {fileID: -359227552, guid: a46f4697018334f48a8e8739478ece73, type: 3}
+  ScientificName: Dracaena trifasciata
+  Description: Dracaena trifasciata is a species of flowering plant in the family
+    Asparagaceae, native to tropical West Africa from Nigeria east to the Congo.
+    It is most commonly known as the snake plant, Saint George's sword, mother-in-law's
+    tongue, and viper's bowstring hemp, among other names.
+  MoneyValue: 000000000500000008000000
+  PlantDayStageMarks: 0200000004000000
+  Type: 0
