@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class InventoryUIAction : MonoBehaviour
 {
+
     [SerializeField]
     private Transform Inventory;
+
     private void OnEnable()
     {
         InventoryUIManager.Instance.GenerateInventoryUI();

@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class InventoryItemAction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool IsDragSpawn;
+    private void Update()
     {
-           
+        if (IsDragSpawn)
+        {
+            this.transform.GetComponent<InventoryItemDrag>().DragObject();
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                IsDragSpawn = false;
+                ReturnPlantToGrid();
+            }
+        }
     }
 
     public void GeneratePlantDisplayButtonPressed()
@@ -18,5 +27,11 @@ public class InventoryItemAction : MonoBehaviour
         {
             InventoryUIManager.Instance.GeneratePlantDisplay(plantObjectData);
         }
+    }
+
+    public void ReturnPlantToGrid()
+    {
+        this.GetComponent<InventoryItemDisplay>().PlantObjectData.isStored = true;
+        this.transform.parent = InventoryUIManager.Instance.InventoryGridTransform;
     }
 }

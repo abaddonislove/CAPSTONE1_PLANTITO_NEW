@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CherryTomatoPlant
   m_EditorClassIdentifier: 
   ItemIndex: 0
-  IsAccessible: 0
+  IsAccessible: 1
   Name: Cheritopma
   Price: 0
   PlantSprite:

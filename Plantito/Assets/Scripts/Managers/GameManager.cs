@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public GameObject HeldPlant;
     public int Money = 0;
     public int DaysPassed = 0;
-    public float PlantKnowledge = 0;
+    public float PlantKnowledgePoints = 0;
     public float PlantLevel = 0;
     private bool isLevel1 = false;
 
     private void Update()
     {
-        if (PlantKnowledge >= 1)
+        if (PlantKnowledgePoints >= 1)
         {
             PlantLevel++;
-            PlantKnowledge = 0;
+            PlantKnowledgePoints = 0;
         }
 
         if (PlantLevel >= 1 && !isLevel1)

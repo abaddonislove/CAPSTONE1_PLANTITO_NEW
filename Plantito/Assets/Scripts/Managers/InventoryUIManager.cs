@@ -1,30 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryUIManager : Singleton<InventoryUIManager>
 {
     [SerializeField]
-    private Transform inventoryGridTransform;
+    public Transform InventoryGridTransform;
+    [SerializeField]
+    public GameObject InventoryPanelObject;
     [SerializeField] 
     private Transform horizontalGridTransform;
-    [SerializeField]
-    private GameObject inventoryPanelObject;
     [SerializeField]
     private GameObject inventoryItemPrefab;
     [SerializeField]
     private GameObject itemDataComponentPrefab;
+    [SerializeField]
+    private BoxCollider2D inventoryArea;
 
-    // Start is called before the first frame update
     void Start()
     {
         GenerateInventoryUI();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void GeneratePlantDisplay(PlantObjectData _item)
@@ -40,9 +36,9 @@ public class InventoryUIManager : Singleton<InventoryUIManager>
 
     public void GenerateInventoryUI()
     {
-        for (int i = 0; i < inventoryGridTransform.childCount; i++)
+        for (int i = 0; i < InventoryGridTransform.childCount; i++)
         {
-            Destroy(inventoryGridTransform.GetChild(i).gameObject);
+            Destroy(InventoryGridTransform.GetChild(i).gameObject);
         }
 
         List<PlantObjectData> plantsOwned = PlantManager.Instance.PlantsOwned;
@@ -52,9 +48,23 @@ public class InventoryUIManager : Singleton<InventoryUIManager>
         {
             if (plant.isStored)
             { 
-                GameObject newInventoryItem = Instantiate(inventoryItemPrefab, inventoryGridTransform);
+                GameObject newInventoryItem = Instantiate(inventoryItemPrefab, InventoryGridTransform);
                 newInventoryItem.GetComponent<InventoryItemDisplay>().PlantObjectData = plant;
             }
         }
+    }
+
+    public void GenerateLastInventoryItem()
+    {
+        GameObject newInventoryItem = Instantiate(inventoryItemPrefab, inventoryArea.transform);
+        Vector3 MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        newInventoryItem.transform.position = new Vector3(MousePos.x, MousePos.y, 0.0f);
+        newInventoryItem.GetComponent<InventoryItemDisplay>().PlantObjectData = PlantManager.Instance.PlantsOwned.Last<PlantObjectData>();
+        newInventoryItem.GetComponent<InventoryItemAction>().IsDragSpawn = true;
+    }
+
+    public bool CheckIsOutside()
+    {
+        return !inventoryArea.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 }

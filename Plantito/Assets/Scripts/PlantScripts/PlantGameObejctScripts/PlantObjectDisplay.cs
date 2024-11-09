@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlantObjectDisplay : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject PlantCanvasUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +33,14 @@ public class PlantObjectDisplay : MonoBehaviour
         {
             this.GetComponent<SpriteRenderer>().sprite = this.GetComponent<PlantObject>().PlantObjectData.plant.PlantSprite[2];
         }
+
+        // prevents weird stacking
+        AdjustZPosition();
+    }
+
+    private void AdjustZPosition()
+    {
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y + 5.0f);
+        this.PlantCanvasUI.transform.GetComponent<RectTransform>().position = new Vector3(0.0f,0.0f, this.transform.position.z);
     }
 }

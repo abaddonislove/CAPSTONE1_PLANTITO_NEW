@@ -11,7 +11,7 @@ public class ItemDataComponentAction : MonoBehaviour
         Debug.Log(removed);
         InventoryUIManager.Instance.GenerateInventoryUI();
         Destroy(this.gameObject);
-        GameManager.Instance.PlantKnowledge += 0.34f;
+        GameManager.Instance.PlantKnowledgePoints += 0.34f;
     }
 
     public void PlaceItem()

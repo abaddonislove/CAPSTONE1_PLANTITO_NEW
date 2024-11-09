@@ -19,7 +19,7 @@ public class PlayerUIDisplay : MonoBehaviour
     {
         moneyValue.text = GameManager.Instance.Money.ToString();
         dayValue.text = GameManager.Instance.DaysPassed.ToString();
-        plantLevel.fillAmount = GameManager.Instance.PlantKnowledge;
+        plantLevel.fillAmount = GameManager.Instance.PlantKnowledgePoints;
         plantLevelNumber.text = GameManager.Instance.PlantLevel.ToString();
     }
 }
