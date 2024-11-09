@@ -93,7 +93,6 @@ public class GameItemsManager : Singleton<GameItemsManager>
     public void UpdateAccessibleItems()
     {
         AccessibleItems = GetAccessibleItems();
-        
     }
 
     public void UnlockItem(Item item)

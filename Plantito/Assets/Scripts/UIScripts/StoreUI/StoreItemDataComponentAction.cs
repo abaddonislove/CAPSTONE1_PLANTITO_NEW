@@ -19,6 +19,7 @@ public class StoreItemDataComponentAction : MonoBehaviour
         {
             PlantManager.Instance.GeneratePlantObjectData(_plant);
             GameManager.Instance.Money -= 2;
+            PopUpUIManager.Instance.AddNewPopUp(item.Name, "1");
         }
     }
 }
